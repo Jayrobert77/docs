@@ -374,7 +374,7 @@ This example refers to the hosts as `host1` and `host2`.
 
    To add a worker to this swarm, run the following command:
 
-       docker swarm join --token SWMTKN-1-5g90q48weqrtqryq4kj6ow0e8xm9wmv9o6vgqc5j320ymybd5c-8ex8j0bc40s6hgvy5ui5gl4gy 172.31.47.252:2377
+       docker swarm join --token SWMTKN-1-aaa 172.31.47.252:2377
    ```
 
    On `host2`, join the swarm using the token from the previous output:

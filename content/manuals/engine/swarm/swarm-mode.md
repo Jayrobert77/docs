@@ -58,7 +58,7 @@ Swarm initialized: current node (dxn1zf6l61qsb1josjja83ngz) is now a manager.
 To add a worker to this swarm, run the following command:
 
     docker swarm join \
-    --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
+    --token SWMTKN-1-aaa \
     192.168.99.100:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
@@ -153,7 +153,7 @@ $ docker swarm join-token worker
 To add a worker to this swarm, run the following command:
 
     docker swarm join \
-    --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
+    --token SWMTKN-1-aaa \
     192.168.99.100:2377
 
 This node joined a swarm as a worker.
@@ -167,7 +167,7 @@ $ docker swarm join-token manager
 To add a manager to this swarm, run the following command:
 
     docker swarm join \
-    --token SWMTKN-1-59egwe8qangbzbqb3ryawxzk3jn97ifahlsrw01yar60pmkr90-bdjfnkcflhooyafetgjod97sz \
+    --token SWMTKN-1-aaa \
     192.168.99.100:2377
 ```
 
@@ -176,7 +176,7 @@ Pass the `--quiet` flag to print only the token:
 ```console
 $ docker swarm join-token --quiet worker
 
-SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c
+SWMTKN-1-aaa
 ```
 
 Be careful with the join tokens because they are the secrets necessary to join
@@ -207,7 +207,7 @@ $ docker swarm join-token  --rotate worker
 To add a worker to this swarm, run the following command:
 
     docker swarm join \
-    --token SWMTKN-1-2kscvs0zuymrsc9t0ocyy1rdns9dhaodvpl639j2bqx55uptag-ebmn5u927reawo27s3azntd44 \
+    --token SWMTKN-1-aaa \
     192.168.99.100:2377
 ```
 

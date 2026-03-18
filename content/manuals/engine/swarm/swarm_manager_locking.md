@@ -39,7 +39,7 @@ Swarm initialized: current node (k1q27tfyx9rncpixhk69sa61v) is now a manager.
 To add a worker to this swarm, run the following command:
 
     docker swarm join \
-    --token SWMTKN-1-0j52ln6hxjpxk2wgk917abcnxywj3xed0y8vi1e5m9t3uttrtu-7bnxvvlz2mrcpfonjuztmtts9 \
+    --token SWMTKN-1-aaa \
     172.31.46.109:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
@@ -47,7 +47,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 To unlock a swarm manager after it restarts, run the `docker swarm unlock`
 command and provide the following key:
 
-    SWMKEY-1-WuYH/IX284+lRcXuoVf38viIDK3HJEKY13MIHX+tTt8
+    SWMKEY-1-aaa
 ```
 
 Store the key in a safe place, such as in a password manager.
@@ -75,7 +75,7 @@ Swarm updated.
 To unlock a swarm manager after it restarts, run the `docker swarm unlock`
 command and provide the following key:
 
-    SWMKEY-1-+MrE8NgAyKj5r3NcR4FiQMdgu+7W72urH0EZeSmP/0Y
+    SWMKEY-1-aaa
 
 Please remember to store this key in a password manager, since without it you
 will not be able to restart the manager.
@@ -124,7 +124,7 @@ $ docker swarm unlock-key
 To unlock a swarm manager after it restarts, run the `docker swarm unlock`
 command and provide the following key:
 
-    SWMKEY-1-8jDgbUNlJtUe5P/lcr9IXGVxqZpZUXPzd+qzcGp4ZYA
+    SWMKEY-1-aaa
 
 Please remember to store this key in a password manager, since without it you
 will not be able to restart the manager.
@@ -146,7 +146,7 @@ Successfully rotated manager unlock key.
 To unlock a swarm manager after it restarts, run the `docker swarm unlock`
 command and provide the following key:
 
-    SWMKEY-1-8jDgbUNlJtUe5P/lcr9IXGVxqZpZUXPzd+qzcGp4ZYA
+    SWMKEY-1-aaa
 
 Please remember to store this key in a password manager, since without it you
 will not be able to restart the manager.

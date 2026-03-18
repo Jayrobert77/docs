@@ -191,7 +191,7 @@ Docker Desktop runs primarily on Docker Engine, which has everything you need to
 
    To add a worker to this swarm, run the following command:
 
-       docker swarm join --token SWMTKN-1-3e0hh0jd5t4yjg209f4g5qpowbsczfahv2dea9a1ay2l8787cf-2h4ly330d0j917ocvzw30j5x9 192.168.65.3:2377
+       docker swarm join --token SWMTKN-1-aaa 192.168.65.3:2377
 
    To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
    ```
@@ -255,7 +255,7 @@ Docker Desktop runs primarily on Docker Engine, which has everything you need to
 
    To add a worker to this swarm, run the following command:
 
-       docker swarm join --token SWMTKN-1-3e0hh0jd5t4yjg209f4g5qpowbsczfahv2dea9a1ay2l8787cf-2h4ly330d0j917ocvzw30j5x9 192.168.65.3:2377
+       docker swarm join --token SWMTKN-1-aaa 192.168.65.3:2377
 
    To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
    ```

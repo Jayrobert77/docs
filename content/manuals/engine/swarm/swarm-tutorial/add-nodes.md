@@ -18,7 +18,7 @@ to add worker nodes.
 
     ```console
     $ docker swarm join \
-      --token  SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
+      --token  SWMTKN-1-aaa \
       192.168.99.100:2377
 
     This node joined a swarm as a worker.
@@ -33,7 +33,7 @@ to add worker nodes.
     To add a worker to this swarm, run the following command:
 
         docker swarm join \
-        --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
+        --token SWMTKN-1-aaa \
         192.168.99.100:2377
     ```
 
@@ -46,7 +46,7 @@ to add worker nodes.
 
     ```console
     $ docker swarm join \
-      --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
+      --token SWMTKN-1-aaa \
       192.168.99.100:2377
 
     This node joined a swarm as a worker.
