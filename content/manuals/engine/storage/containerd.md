@@ -62,6 +62,16 @@ uncompressed layers are still de-duplicated through snapshotters. The
 compressed storage adds overhead proportional to the number of images using
 those layers.
 
+> [!IMPORTANT]
+> containerd uses a separate storage path from the Docker data directory.
+> If you previously configured a custom data directory for Docker (for example,
+> to use a different partition), containerd's storage is **not** automatically
+> moved to that location. You need to configure containerd's data directory
+> separately to avoid filling your root partition.
+>
+> To configure containerd's data directory, see the
+> [containerd configuration documentation](https://github.com/containerd/containerd/blob/main/docs/ops.md#base-configuration).
+
 If disk space is constrained, consider the following:
 
 - Regularly prune unused images with `docker image prune`
