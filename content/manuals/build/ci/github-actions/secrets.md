@@ -57,51 +57,12 @@ jobs:
             "github_token=${{ secrets.GITHUB_TOKEN }}"
 ```
 
-### How secrets appear in the build container
-
-When you use a secret mount, the secret is made available as a file inside the build container.
-By default, secrets are mounted to `/run/secrets/<id>`, where `<id>` is the secret identifier
-you specify in the `--mount` instruction.
-
-For more details on secret mounts, file locations, and permissions,
-see [Secret mounts](/manuals/build/building/secrets.md#secret-mounts).
-
-**File location:**
-
-- Default path: `/run/secrets/<id>` (for example, `/run/secrets/github_token`)
-- Custom path: Use the `target` option to specify a different location
-
-**Environment variable secrets:**
-
-When you use the `env` option in your secret mount
-(like `--mount=type=secret,id=github_token,env=GITHUB_TOKEN`),
-the secret file content is automatically loaded into the specified environment variable.
-This is useful when tools expect credentials via environment variables rather than files.
-
-**Example with custom target:**
-
-```dockerfile
-# syntax=docker/dockerfile:1
-FROM alpine
-# Mount secret to a custom location and use it with curl
-RUN --mount=type=secret,id=github_token,target=/tmp/token \
-    curl -H "Authorization: token $(cat /tmp/token)" https://api.github.com/user
-```
-
-**Example using secret as environment variable:**
-
-```dockerfile
-# syntax=docker/dockerfile:1
-FROM alpine
-# Load secret into environment variable
-RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
-    curl -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/user
-```
-
-> [!WARNING]
-> Never use commands like `cat`, `echo`, or `printenv` to output secret values directly,
-> as this would expose them in build logs and layer history.
-> Always consume secrets within commands without displaying their values.
+> [!NOTE]
+> Secrets are mounted as files in the build container.
+> By default, they're available at `/run/secrets/<id>`.
+> You can also use the `env` option to load a secret into an environment variable,
+> or the `target` option to customize the mount path.
+> For details on secret mounts, see [Build secrets](/manuals/build/building/secrets.md).
 
 ### Using secret files
 
