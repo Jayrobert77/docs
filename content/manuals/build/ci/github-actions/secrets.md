@@ -57,6 +57,46 @@ jobs:
             "github_token=${{ secrets.GITHUB_TOKEN }}"
 ```
 
+### How secrets appear in the build container
+
+When you use a secret mount, the secret is made available as a file inside the build container.
+By default, secrets are mounted to `/run/secrets/<id>`, where `<id>` is the secret identifier
+you specify in the `--mount` instruction.
+
+**File location and permissions:**
+
+- Default path: `/run/secrets/<id>` (for example, `/run/secrets/github_token`)
+- Custom path: Use the `target` option to specify a different location
+- File permissions: Secrets are mounted with restricted permissions (typically mode 0400),
+  readable only by the user running the build step
+- Content: The file contains the exact bytes of the secret value, including any newlines
+
+**Environment variable secrets:**
+
+When you use the `env` option in your secret mount (like `--mount=type=secret,id=github_token,env=GITHUB_TOKEN`),
+the secret file content is automatically loaded into the specified environment variable.
+This is useful when tools expect credentials via environment variables rather than files.
+
+**Example with custom target:**
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM alpine
+# Mount secret to a custom location
+RUN --mount=type=secret,id=github_token,target=/tmp/token \
+    cat /tmp/token
+```
+
+**Example reading secret file directly:**
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM alpine
+# Read from default location
+RUN --mount=type=secret,id=github_token \
+    cat /run/secrets/github_token
+```
+
 ### Using secret files
 
 The `secret-files` input lets you mount existing files as secrets in your build.
