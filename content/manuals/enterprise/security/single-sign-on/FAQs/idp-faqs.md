@@ -33,9 +33,9 @@ If your certificate expires, contact your identity provider to retrieve a new X.
 
 If the certificate has already expired and users cannot access Docker Hub to update the certificate:
 
-- **Contact Docker Support**: Docker support can help you regain access to update the certificate.
-- **Use username/password authentication**: If SSO enforcement is not turned on, users can sign in with their Docker username and password to access the Admin Console.
-- **Maintain a break-glass account**: As a best practice, organizations should maintain a dedicated administrator account (sometimes called a "break-glass" or "guest user" account) that is not subject to SSO. This account can be used to access the Admin Console in emergency situations like certificate expiration.
+- Contact Docker Support to help you regain access to update the certificate
+- Sign in with your Docker username and password to access the Admin Console (if SSO enforcement is not turned on)
+- Maintain a dedicated administrator account (sometimes called a "break-glass" or "guest user" account) that is not subject to SSO for emergency access
 
 To prevent lockouts, monitor your certificate expiration dates and renew certificates before they expire.
 
