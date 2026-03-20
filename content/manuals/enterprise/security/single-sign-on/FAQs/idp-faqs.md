@@ -5,9 +5,9 @@ description: Frequently asked questions about Docker SSO and identity provider c
 keywords: identity providers, SSO IdP, SAML, Azure AD, Entra ID, certificate management
 tags: [FAQ]
 aliases:
-- /single-sign-on/idp-faqs/
-- /faq/security/single-sign-on/idp-faqs/
-- /security/faqs/single-sign-on/idp-faqs/
+  - /single-sign-on/idp-faqs/
+  - /faq/security/single-sign-on/idp-faqs/
+  - /security/faqs/single-sign-on/idp-faqs/
 ---
 
 ## Can I use multiple identity providers with Docker SSO?
@@ -28,6 +28,16 @@ To turn on SSO in Docker, you need the following from your IdP:
 ## What happens if my existing certificate expires?
 
 If your certificate expires, contact your identity provider to retrieve a new X.509 certificate. Then update the certificate in the [SSO configuration settings](/manuals/enterprise/security/single-sign-on/manage.md#manage-sso-connections) in the Docker Admin Console.
+
+### Workarounds if users are locked out
+
+If the certificate has already expired and users cannot access Docker Hub to update the certificate:
+
+- **Contact Docker Support**: Docker support can help you regain access to update the certificate.
+- **Use username/password authentication**: If SSO enforcement is not turned on, users can sign in with their Docker username and password to access the Admin Console.
+- **Maintain a break-glass account**: As a best practice, organizations should maintain a dedicated administrator account (sometimes called a "break-glass" or "guest user" account) that is not subject to SSO. This account can be used to access the Admin Console in emergency situations like certificate expiration.
+
+To prevent lockouts, monitor your certificate expiration dates and renew certificates before they expire.
 
 ## What happens if my IdP goes down when SSO is turned on?
 
