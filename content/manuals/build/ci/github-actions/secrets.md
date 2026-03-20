@@ -63,17 +63,18 @@ When you use a secret mount, the secret is made available as a file inside the b
 By default, secrets are mounted to `/run/secrets/<id>`, where `<id>` is the secret identifier
 you specify in the `--mount` instruction.
 
-**File location and permissions:**
+For more details on secret mounts, file locations, and permissions,
+see [Secret mounts](/manuals/build/building/secrets.md#secret-mounts).
+
+**File location:**
 
 - Default path: `/run/secrets/<id>` (for example, `/run/secrets/github_token`)
 - Custom path: Use the `target` option to specify a different location
-- File permissions: Secrets are mounted with restricted permissions (typically mode 0400),
-  readable only by the user running the build step
-- Content: The file contains the exact bytes of the secret value, including any newlines
 
 **Environment variable secrets:**
 
-When you use the `env` option in your secret mount (like `--mount=type=secret,id=github_token,env=GITHUB_TOKEN`),
+When you use the `env` option in your secret mount
+(like `--mount=type=secret,id=github_token,env=GITHUB_TOKEN`),
 the secret file content is automatically loaded into the specified environment variable.
 This is useful when tools expect credentials via environment variables rather than files.
 
@@ -82,20 +83,25 @@ This is useful when tools expect credentials via environment variables rather th
 ```dockerfile
 # syntax=docker/dockerfile:1
 FROM alpine
-# Mount secret to a custom location
+# Mount secret to a custom location and use it with curl
 RUN --mount=type=secret,id=github_token,target=/tmp/token \
-    cat /tmp/token
+    curl -H "Authorization: token $(cat /tmp/token)" https://api.github.com/user
 ```
 
-**Example reading secret file directly:**
+**Example using secret as environment variable:**
 
 ```dockerfile
 # syntax=docker/dockerfile:1
 FROM alpine
-# Read from default location
-RUN --mount=type=secret,id=github_token \
-    cat /run/secrets/github_token
+# Load secret into environment variable
+RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
+    curl -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/user
 ```
+
+> [!WARNING]
+> Never use commands like `cat`, `echo`, or `printenv` to output secret values directly,
+> as this would expose them in build logs and layer history.
+> Always consume secrets within commands without displaying their values.
 
 ### Using secret files
 
